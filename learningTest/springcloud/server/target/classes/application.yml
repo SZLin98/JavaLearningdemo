@@ -1,0 +1,20 @@
+server:
+  port: 8083
+spring:
+  application:
+    #    注意服务器名称不能使用下划线连接，可以使用中划线连接
+    name: user-service
+eureka:
+  client:
+    service-url:
+      #     eureka注册的地址，根据这个地址去注册
+      defaultZone: http://ooad33.top:8081/eureka
+  instance:
+    #   其他服务获取此服务时不响应服务名称，而是响应该服务的ip
+    prefer-ip-address: true
+    #   指定自己的ip信息，不指定的话会自己寻找
+#    ip-address: 127.0.0.1
+    #   服务失效时间，默认值90秒
+    lease-expiration-duration-in-seconds: 90
+    #   服务续约(renew)的间隔，默认为30秒
+    lease-renewal-interval-in-seconds: 30

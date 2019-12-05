@@ -1,0 +1,40 @@
+server:
+  port: 8082
+spring:
+  application:
+    name: user-consumer
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://ooad33.top:8081/eureka
+  instance:
+    prefer-ip-address: true
+#    ip-address: 127.0.0.1
+    lease-expiration-duration-in-seconds: 90
+    lease-renewal-interval-in-seconds: 30
+
+#user-service:   # 注意这是提供某一服务系统的服务名称，仅对这一服务起作用，不能随意抒写
+#  ribbon:
+#    #    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule  # 修改ribbon中默认的轮询为随机（采用spring系统提供包）
+#    ConnectTimeout: 250 # Ribbon的连接超时时间
+#    ReadTimeout: 1000 # Ribbon的数据读取超时时间
+#    OkToRetryOnAllOperations: true # 是否对所有操作都进行重试
+#    MaxAutoRetriesNextServer: 1 # 切换实例的重试次数
+#    MaxAutoRetries: 1 # 对当前实例的重试次数
+
+
+feign:
+  hystrix:
+    enabled: true
+# 请求和响应进行压缩，GZIP压缩，以减少通信过程中的性能损耗
+#  compression:
+# 开启请求压缩
+#    request:
+#      enabled: true
+## 设置压缩的数据类型
+##       mime-types: text/html,application/xml,application/json
+##      min-request-size: 2048 # 设置触发压缩的大小下限
+## 开启响应压缩
+#    response:
+#      enabled: true

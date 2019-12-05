@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: zuul-gateway
+server:
+  port: 5555
+
+zuul:
+  routes:
+    traditional-url:
+      path: /test/**
+      url: http://localhost:9001/
